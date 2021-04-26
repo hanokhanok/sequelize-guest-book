@@ -1,0 +1,23 @@
+extends ./layout/default.pug
+
+block content
+	table(style="width: 100%; border: 1px solid #ddd;")
+		thead
+			tr
+				th 번호
+				th(style="border-left: 1px solid #ddd;") 작성자
+				th(style="border-left: 1px solid #ddd;") 내용
+				th(style="border-left: 1px solid #ddd;") 관리
+		tbody
+			each v in result
+				tr
+					td(style="padding: 0.5em; border-top: 1px solid #ddd; text-align: center;")= v.id
+					td(style="padding: 0.5em; border-top: 1px solid #ddd; text-align: center; border-left: 1px solid #ddd;")= v.writer
+					td(style="padding: 0.5em; border-top: 1px solid #ddd; border-left: 1px solid #ddd;")= v.comment
+					td(style="padding: 0.5em; border-top: 1px solid #ddd; text-align: center; border-left: 1px solid #ddd;")
+						a(href=`/update/${v.id}`) 수정
+						| &nbsp;
+						a(href=`/remove/${v.id}`) 삭제
+
+	div(style="text-align: center; margin-top: 2em;")
+		a(href="/write") 방명록 남기기
